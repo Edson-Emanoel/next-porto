@@ -42,11 +42,19 @@ export default function Add(){
         
         <div className="bg-zinc-800 h-screen flex flex-col items-center pt-5 text-white">
             <form className="flex flex-col items-end gap-5 text-black">
-            <input type="text" placeholder="codigo" 
-                className="p-2 w-20 self-start" value={codigo} onChange={ e => setCodigo(e.target.value)} 
+            <input 
+                type="text"
+                placeholder="codigo" 
+                className="p-2 w-20 self-start"
+                value={codigo}
+                onChange={ e => setCodigo(e.target.value)} 
             />
-            <input type="text" placeholder="nome categoria" 
-                className="p-2 w-96" value={nome} onChange={ e => setNome(e.target.value)}
+            <input 
+                type="text"
+                placeholder="nome categoria" 
+                className="p-2 w-96"
+                value={nome}
+                onChange={ e => setNome(e.target.value)}
             />
             <div className="flex gap-2 justify-between w-96">
                 <select className="p-2 w-60 text-center" 

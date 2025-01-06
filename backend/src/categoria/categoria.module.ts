@@ -24,9 +24,9 @@ export class CategoriaModule implements OnModuleInit {
 
     for(const categoriaIndex of categorias){
       await this.categoriaService.create({
-        nome: `Nome: ${categoriaIndex}`,
-        codigo: `Codigo: ${categoriaIndex}`,
-        ativo: `Ativo: ${categoriaIndex}`
+        nome: `Nome ${categoriaIndex}`,
+        codigo: `Codigo ${categoriaIndex}`,
+        ativo: `Ativo ${categoriaIndex}`
       })
     }
   }
