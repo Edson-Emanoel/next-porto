@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react";
 
 interface ICategoria {
@@ -9,6 +8,10 @@ interface ICategoria {
 }
 
 export default function Home() {
+  const [codigo, setCodigo] = useState("")
+  const [nome, setNome] = useState("")
+  const [ativo, setAtivo] = useState("")
+  
   const [categoria, setCategoria] = useState<any>({})
   const [categorias, setCategorias] = useState<ICategoria[]>([])
 
@@ -28,7 +31,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(categoria),
+      body: JSON.stringify({codigo, nome, ativo}),
     })
     setCategoria({})
     await obterCategorias()
@@ -40,7 +43,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(categoria),
+      body: JSON.stringify({codigo, nome, ativo}),
     })
     setCategoria({})
     await obterCategorias()
@@ -51,7 +54,7 @@ export default function Home() {
     
     if(confirm){
         await fetch('http://localhost:8080/categoria/' + id, {
-            method: 'DELETE'
+          method: 'DELETE'
         })
 
         await obterCategorias()
@@ -76,8 +79,8 @@ export default function Home() {
             id="codigo"
             type="text"
             placeholder="Código da Categoria"
-            value={categoria.codigo}
-            onChange={e => setCategoria({...categoria, codigo: e.target.value})}
+            value={codigo}
+            onChange={e => setCodigo(e.target.value)}
             className="rounded-md h-[35px] px-2 outline-none bg-slate-800 text-gray-300"
           />
         </div>
@@ -89,8 +92,8 @@ export default function Home() {
             id="nome"
             type="text"
             placeholder="Nome da Categoria"
-            value={categoria.nome}
-            onChange={e => setCategoria({...categoria, nome: e.target.value})}
+            value={nome}
+            onChange={e => setNome(e.target.value)}
             className="rounded-md h-[35px] px-2 outline-none bg-slate-800 text-gray-300"
           />
         </div>
@@ -100,8 +103,8 @@ export default function Home() {
 
             <select
                 id="ativo"
-                value={categoria.ativo}
-                onChange={e => setCategoria({...categoria, ativo: e.target.value})}
+                value={ativo}
+                onChange={e => setAtivo(e.target.value)}
                 className="rounded-md h-[35px] px-2 outline-none bg-slate-800 text-gray-300"
             >
                 <option value="">Selecione se Sim ou Não</option>
